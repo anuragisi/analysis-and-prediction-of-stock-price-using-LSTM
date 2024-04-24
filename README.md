@@ -36,3 +36,11 @@ import matplotlib.pyplot as plt
 start_date = datetime.datetime(2020, 1, 15)
 end_date = datetime.datetime(2023, 12, 31)
 </pre>
+
+<p>
+ Loading Data from Yahoo Finance
+</p>
+<pre>
+ df = yf.download('UBL.NS', start_date, end_date)
+</pre>
+<p>View Dataframe</p>
