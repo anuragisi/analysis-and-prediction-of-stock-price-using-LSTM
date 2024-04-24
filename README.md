@@ -371,10 +371,15 @@ predictions = scaler.inverse_transform(predictions)
 <pre>
  # Get the root mean squared error (RMSE)
 rmse = np.sqrt(np.mean(((predictions - y_test) ** 2)))
-rmse
+print("Root Mean Squared Error (RMSE):", rmse)
+
+ # Calculate accuracy percentage
+accuracy_percentage = (1 - (rmse / valid['Close'].mean())) * 100
+print("Accuracy Percentage:", accuracy_percentage)
 </pre>
 <samp>
- <img width="362" alt="image" src="https://github.com/anuragprasad95/analysis-and-prediction-of-stock-price-using-LSTM/assets/3609255/dc0bf781-67cb-4e05-b8e8-2f9f457eb43b">
+<img width="411" alt="image" src="https://github.com/anuragprasad95/analysis-and-prediction-of-stock-price-using-LSTM/assets/3609255/5765d4e9-f7d2-4ff9-9052-b97634ca9ac9">
+
 </samp>
 <p>
  2.9 Visualization
