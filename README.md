@@ -19,7 +19,7 @@ Stock price prediction refers to understanding various aspects of the stock mark
 <br>
 
 #Import Libraries
-<code>
+<pre>
 #!pip install datetime yfinance seaborn matplotlib
 import datetime
 import numpy as np
@@ -27,4 +27,4 @@ import pandas as pd
 import yfinance as yf
 import seaborn as sns
 import matplotlib.pyplot as plt
-</code>
+</pre>
