@@ -5,11 +5,6 @@ Stock price prediction refers to understanding various aspects of the stock mark
 <br>
 <b>Focus areas for Analysis:</b>
 <br>
-
-    The change in closing price of the stock over time.
-    Visualization of Candlestick Monthly data.
-    The % daily return of the stock.
-    The moving average of various stocks.
  <ul>
   <li>The change in closing price of the stock over time.</li>
   <li>Visualization of Candlestick Monthly data. </li>
