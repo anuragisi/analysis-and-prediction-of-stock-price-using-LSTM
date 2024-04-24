@@ -1,4 +1,4 @@
-#Analysis and Prediction of stock price using LSTM
+# Analysis and Prediction of stock price using LSTM
 
 Stock price prediction refers to understanding various aspects of the stock market that can influence the price of a stock, and based on these potential factors, build a model to predict the stock's price. This can help individuals and institutions speculate on the stock price trend and help them decide whether to buy or short the stock price to maximize their profit. While using Machine Learning and Time Series helps us to discover the future value of a particular stock and other financial assets traded on an exchange. The entire idea of analysis and prediction is to gain significant profits.
 
@@ -172,7 +172,7 @@ for i in df.columns.tolist():
 <img width="477" alt="image" src="https://github.com/anuragprasad95/analysis-and-prediction-of-stock-price-using-LSTM/assets/3609255/cf66e481-a688-40d5-abca-2f14de136398">
 </samp>
 
-#Analysis
+# Analysis
 <p>
  Plotting Moving Average (50,200) is a simple technal analysis that smooths out price data.
 </p>
