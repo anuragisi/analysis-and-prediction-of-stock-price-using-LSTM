@@ -83,7 +83,7 @@ plt.figure(figsize=(10, 6))
 #plt.plot(df['Date'], df['High'], label='High')
 #plt.plot(df['Date'], df['Low'], label='Low')
 plt.plot(df.index, df['Close'], label='Close')
-
+<br>
 plt.title('UBL Stock Prices Over Time')
 plt.xlabel('Date')
 plt.ylabel('Closing Price')
@@ -100,7 +100,7 @@ plt.show()
 <pre>
  #Plotting monthly candlestick chart with a separate volume plot with MA(20)
 #mpf.plot(monthly_data, type='candle', style='charles', volume=True, mav=(20), show_nontrading=True, addplot=mpf.make_addplot(monthly_data['Volume'], panel=1, ylabel='Volume'),tight_layout=True, figratio=(16, 9), scale_width_adjustment=dict(volume=0.7, candle=1))
-
+<br>
  #Plotting monthly candlestick chart with a separate volume plot
 mpf.plot(monthly_data, type='candle', style='charles', volume=True, show_nontrading=True, tight_layout=True, figratio=(16, 9), scale_width_adjustment=dict(volume=0.7, candle=1))
 </pre>
@@ -190,7 +190,7 @@ for ma in ma_day:
     column_name = f"MA for {ma} days"
     df[column_name]=df['Close'].rolling(ma).mean()
     plt.plot(df.index, df[column_name], label=column_name)
-
+<br>
 plt.title('UBL Daily Close Prices and Moving Averages')
 plt.xlabel('Date')
 plt.ylabel('Price')
@@ -207,11 +207,10 @@ plt.show()
 <pre>
  #Calculate daily return percentage
 df['Daily Return'] = df['Close'].pct_change()
-
-
+<br>
 plt.figure(figsize=(10, 6))
 plt.plot(df.index, df['Daily Return'], linestyle='--', marker='o', label='Daily Return')
-
+<br>
 plt.title('Daily Return Percentage')
 plt.xlabel('Date')
 plt.ylabel('Percentage')
@@ -225,7 +224,7 @@ plt.show()
 <pre>
 plt.figure(figsize=(12, 9))
 df['Daily Return'].hist(bins=50, alpha=0.5, label='UBL')
-
+<br>
 plt.xlabel('Daily Return')
 plt.ylabel('Counts')
 plt.title('Daily Return of UBL using histogram')
@@ -258,8 +257,10 @@ plt.show()
 <pre>
  #Create a new dataframe with only the 'Close column 
 data = df.filter(['Close'])
+ <br>
  #Convert the dataframe to a numpy array because ML/DL libraries requires numpy arrays as inputs
 dataset = data.values
+ <br>
  #Get the number of rows to train the model on
 training_data_len = int(np.ceil( len(dataset) * .80 ))
 
@@ -274,7 +275,7 @@ training_data_len
 <pre>
  #Scale the data
 from sklearn.preprocessing import MinMaxScaler
-
+<br>
 scaler = MinMaxScaler(feature_range=(0,1))
 scaled_data = scaler.fit_transform(dataset)
 
@@ -292,7 +293,7 @@ train_data = scaled_data[0:int(training_data_len), :]
 # Split the data into x_train and y_train data sets
 x_train = []
 y_train = []
-
+<br>
 for i in range(60, len(train_data)):
     x_train.append(train_data[i-60:i, 0])
     y_train.append(train_data[i, 0])
@@ -300,12 +301,13 @@ for i in range(60, len(train_data)):
         print(x_train)
         print(y_train)
         print()
-        
+ <br>   
  # Convert the x_train and y_train to numpy arrays 
 x_train, y_train = np.array(x_train), np.array(y_train)
-
+<br>
  # Reshape the data
 x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
+ <br>
  # x_train.shape
 </pre>
 <samp>
@@ -315,14 +317,14 @@ x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 <pre>
  from keras.models import Sequential
 from keras.layers import Dense, LSTM
-
+<br>
  #Build the LSTM model
 model = Sequential()
 model.add(LSTM(128, return_sequences=True, input_shape= (x_train.shape[1], 1)))
 model.add(LSTM(64, return_sequences=False))
 model.add(Dense(25))
 model.add(Dense(1))
-
+<br>
  #Compile the model
 model.compile(optimizer='adam', loss='mean_squared_error')
 </pre>
@@ -343,15 +345,16 @@ model.fit(x_train, y_train, batch_size=1, epochs=1)
  #Create the testing data set
  #Create a new array containing scaled values from index 1543 to 2002 
 test_data = scaled_data[training_data_len - 60: , :]
+ <br>
  #Create the data sets x_test and y_test
 x_test = []
 y_test = dataset[training_data_len:, :]
 for i in range(60, len(test_data)):
     x_test.append(test_data[i-60:i, 0])
-    
+    <br>
  #Convert the data to a numpy array
 x_test = np.array(x_test)
-
+<br>
  #Reshape the data
 x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1 ))
 </pre>
@@ -390,6 +393,7 @@ print("Accuracy Percentage:", accuracy_percentage)
 train = data[:training_data_len]
 valid = data[training_data_len:]
 valid['Predictions'] = predictions
+ <br>
 #Visualize the data
 plt.figure(figsize=(16,6))
 plt.title('Model')
