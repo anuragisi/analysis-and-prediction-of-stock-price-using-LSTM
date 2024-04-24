@@ -20,11 +20,19 @@ Stock price prediction refers to understanding various aspects of the stock mark
 
 #Import Libraries
 <pre>
-#!pip install datetime yfinance seaborn matplotlib
+!pip install datetime numpy pandas yfinance seaborn matplotlib
 import datetime
 import numpy as np
 import pandas as pd
 import yfinance as yf
 import seaborn as sns
 import matplotlib.pyplot as plt
+</pre>
+
+#Dataset
+<p>I have taken the stock price data of United Breweries Holdings Limited from Yahoo Finance from 1st Jan 2022 to 1st Jan 2023.</p>
+<p>Time Period of Data: Define the timeframe for which you want to fetch data.</p>
+<pre>
+start_date = datetime.datetime(2020, 1, 15)
+end_date = datetime.datetime(2023, 12, 31)
 </pre>
