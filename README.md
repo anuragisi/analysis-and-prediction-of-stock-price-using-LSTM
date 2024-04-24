@@ -395,5 +395,5 @@ plt.legend(['Train', 'Val', 'Predictions'], loc='lower right')
 plt.show()
 </pre>
 <samp>
- <img width="935" alt="image" src="https://github.com/anuragprasad95/analysis-and-prediction-of-stock-price-using-LSTM/assets/3609255/43051c6e-a1dd-4a04-a6d5-aac73e8cba39">
+ <img width="935" alt="image" src="https://github.com/anuragprasad95/analysis-and-prediction-of-stock-price-using-LSTM/assets/3609255/8c3eac5c-3539-462b-8b52-3a93f91a47c6">
 </samp>
