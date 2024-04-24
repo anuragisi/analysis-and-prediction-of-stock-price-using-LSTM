@@ -29,7 +29,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 </pre>
 <p>
- Exploratory Data Analysis (EDA) using ELT (Extract, Load, Transform)
+ <b>Exploratory Data Analysis (EDA) using ELT (Extract, Load, Transform)</b>
+</p>
 #Dataset
 <p>I have taken the stock price data of United Breweries Holdings Limited from Yahoo Finance from 1st Jan 2022 to 1st Jan 2023.</p>
 <p>Time Period of Data: Define the timeframe for which you want to fetch data.</p>
