@@ -97,10 +97,10 @@ plt.show()
  Plot - Candlestick and Frequency - Monthly OHLC Volume Data
 </p>
 <pre>
- # Plotting monthly candlestick chart with a separate volume plot with MA(20)
+ #Plotting monthly candlestick chart with a separate volume plot with MA(20)
 #mpf.plot(monthly_data, type='candle', style='charles', volume=True, mav=(20), show_nontrading=True, addplot=mpf.make_addplot(monthly_data['Volume'], panel=1, ylabel='Volume'),tight_layout=True, figratio=(16, 9), scale_width_adjustment=dict(volume=0.7, candle=1))
 
- # Plotting monthly candlestick chart with a separate volume plot
+ #Plotting monthly candlestick chart with a separate volume plot
 mpf.plot(monthly_data, type='candle', style='charles', volume=True, show_nontrading=True, tight_layout=True, figratio=(16, 9), scale_width_adjustment=dict(volume=0.7, candle=1))
 </pre>
 <samp>
@@ -181,10 +181,10 @@ for i in df.columns.tolist():
 
 plt.figure(figsize=(10, 6))
 
- # Plot Close price
+ #Plot Close price
 plt.plot(df.index, df['Close'], label='Close')
 
- # Plot Moving Averages
+ #Plot Moving Averages
 for ma in ma_day:
     column_name = f"MA for {ma} days"
     df[column_name]=df['Close'].rolling(ma).mean()
@@ -204,7 +204,7 @@ plt.show()
  Average Daily Returns
 </p>
 <pre>
- # Calculate daily return percentage
+ #Calculate daily return percentage
 df['Daily Return'] = df['Close'].pct_change()
 
 
@@ -255,11 +255,11 @@ plt.show()
 </samp>
 <p>2.1 Data Prepartion</p>
 <pre>
- # Create a new dataframe with only the 'Close column 
+ #Create a new dataframe with only the 'Close column 
 data = df.filter(['Close'])
- # Convert the dataframe to a numpy array because ML/DL libraries requires numpy arrays as inputs
+ #Convert the dataframe to a numpy array because ML/DL libraries requires numpy arrays as inputs
 dataset = data.values
- # Get the number of rows to train the model on
+ #Get the number of rows to train the model on
 training_data_len = int(np.ceil( len(dataset) * .80 ))
 
 training_data_len
@@ -271,7 +271,7 @@ training_data_len
  2.2 Data Scaling
 </p>
 <pre>
- # Scale the data
+ #Scale the data
 from sklearn.preprocessing import MinMaxScaler
 
 scaler = MinMaxScaler(feature_range=(0,1))
@@ -286,7 +286,7 @@ scaled_data
  2.3 Creating Training Data
 </p>
 <pre>
- # Create the scaled training data set
+ #Create the scaled training data set
 train_data = scaled_data[0:int(training_data_len), :]
 # Split the data into x_train and y_train data sets
 x_train = []
@@ -315,21 +315,21 @@ x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
  from keras.models import Sequential
 from keras.layers import Dense, LSTM
 
- # Build the LSTM model
+ #Build the LSTM model
 model = Sequential()
 model.add(LSTM(128, return_sequences=True, input_shape= (x_train.shape[1], 1)))
 model.add(LSTM(64, return_sequences=False))
 model.add(Dense(25))
 model.add(Dense(1))
 
- # Compile the model
+ #Compile the model
 model.compile(optimizer='adam', loss='mean_squared_error')
 </pre>
 <p>
 2.5 Model Training
 </p>
 <pre>
- # Train the model
+ #Train the model
 model.fit(x_train, y_train, batch_size=1, epochs=1)
 </pre>
 <samp>
@@ -339,26 +339,26 @@ model.fit(x_train, y_train, batch_size=1, epochs=1)
  2.6 Creating Testing Data
 </p>
 <pre>
- # Create the testing data set
- # Create a new array containing scaled values from index 1543 to 2002 
+ #Create the testing data set
+ #Create a new array containing scaled values from index 1543 to 2002 
 test_data = scaled_data[training_data_len - 60: , :]
- # Create the data sets x_test and y_test
+ #Create the data sets x_test and y_test
 x_test = []
 y_test = dataset[training_data_len:, :]
 for i in range(60, len(test_data)):
     x_test.append(test_data[i-60:i, 0])
     
- # Convert the data to a numpy array
+ #Convert the data to a numpy array
 x_test = np.array(x_test)
 
- # Reshape the data
+ #Reshape the data
 x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1 ))
 </pre>
 <p>
  2.7 Making Predictions
 </p>
 <pre>
- # Get the models predicted price values 
+ #Get the models predicted price values 
 predictions = model.predict(x_test)
 predictions = scaler.inverse_transform(predictions)
 </pre>
@@ -385,11 +385,11 @@ print("Accuracy Percentage:", accuracy_percentage)
  2.9 Visualization
 </p>
 <pre>
- # Plot the data
+ #Plot the data
 train = data[:training_data_len]
 valid = data[training_data_len:]
 valid['Predictions'] = predictions
-# Visualize the data
+#Visualize the data
 plt.figure(figsize=(16,6))
 plt.title('Model')
 plt.xlabel('Date', fontsize=18)
