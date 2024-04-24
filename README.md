@@ -48,3 +48,80 @@ end_date = datetime.datetime(2023, 12, 31)
 <samp>
  <img width="580" alt="image" src="https://github.com/anuragprasad95/analysis-and-prediction-of-stock-price-using-LSTM/assets/3609255/62b77e1e-68b2-4298-84d6-7c33d434f217">
 </samp>
+
+<p>Check index</p>
+<pre>print(df.index)</pre>
+<samp>
+ <img width="549" alt="image" src="https://github.com/anuragprasad95/analysis-and-prediction-of-stock-price-using-LSTM/assets/3609255/19d056de-9cf7-41e6-863a-4da809e12394">
+</samp>
+
+<p>Reset Index</p>
+<pre> df1 = df.reset_index()
+df1['Date'] = pd.to_datetime(df1['Date'])
+df1</pre>
+<samp>
+ <img width="589" alt="image" src="https://github.com/anuragprasad95/analysis-and-prediction-of-stock-price-using-LSTM/assets/3609255/b75e3f13-c937-4dc2-af75-01496dd04d2f">
+</samp>
+<p>
+ Converting from Daily to Monthly Frequency data
+</p>
+<pre>
+monthly_data = df.resample('M').agg({'Open': 'first', 'High': 'max', 'Low': 'min', 'Close': 'last', 'Volume': 'sum'})
+monthly_data.head()
+</pre>
+<samp>
+ <img width="837" alt="image" src="https://github.com/anuragprasad95/analysis-and-prediction-of-stock-price-using-LSTM/assets/3609255/255c9001-8d9a-4e5a-8258-25bd01fe887e">
+</samp>
+<p>
+ Plot - Line and Frequency -Daily closing Price
+</p>
+<pre>
+ # Plotting
+plt.figure(figsize=(10, 6))
+#plt.plot(df['Date'], df['Open'], label='Open')
+#plt.plot(df['Date'], df['High'], label='High')
+#plt.plot(df['Date'], df['Low'], label='Low')
+plt.plot(df.index, df['Close'], label='Close')
+
+plt.title('UBL Stock Prices Over Time')
+plt.xlabel('Date')
+plt.ylabel('Closing Price')
+plt.legend()
+plt.grid(True)
+plt.show()
+</pre>
+<samp>
+<img width="733" alt="image" src="https://github.com/anuragprasad95/analysis-and-prediction-of-stock-price-using-LSTM/assets/3609255/f5114aa2-3174-4902-af1e-136b2334a824">
+</samp>
+<p>
+ Plot - Candlestick and Frequency - Monthly OHLC Volume Data
+</p>
+<pre>
+ # Plotting monthly candlestick chart with a separate volume plot with MA(20)
+#mpf.plot(monthly_data, type='candle', style='charles', volume=True, mav=(20), show_nontrading=True, addplot=mpf.make_addplot(monthly_data['Volume'], panel=1, ylabel='Volume'),tight_layout=True, figratio=(16, 9), scale_width_adjustment=dict(volume=0.7, candle=1))
+
+# Plotting monthly candlestick chart with a separate volume plot
+mpf.plot(monthly_data, type='candle', style='charles', volume=True, show_nontrading=True, tight_layout=True, figratio=(16, 9), scale_width_adjustment=dict(volume=0.7, candle=1))
+</pre>
+<samp>
+<img width="1229" alt="image" src="https://github.com/anuragprasad95/analysis-and-prediction-of-stock-price-using-LSTM/assets/3609255/d252c914-c6a4-4c21-a06b-e96670a51a00">
+</samp>
+
+<p>
+ Total Rows & Columns
+</p>
+<pre>
+df.shape
+</pre>
+<samp>
+ <img width="157" alt="image" src="https://github.com/anuragprasad95/analysis-and-prediction-of-stock-price-using-LSTM/assets/3609255/25e20156-cc4f-4f85-9a69-d1652ecd5a08">
+</samp>
+<p>
+ Data Information
+</p>
+<pre>
+ df.info()
+</pre>
+<samp>
+ <img width="406" alt="image" src="https://github.com/anuragprasad95/analysis-and-prediction-of-stock-price-using-LSTM/assets/3609255/82694be3-c735-450a-ae14-61b17913aff6">
+</samp>
