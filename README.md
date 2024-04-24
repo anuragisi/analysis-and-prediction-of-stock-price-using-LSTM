@@ -44,3 +44,7 @@ end_date = datetime.datetime(2023, 12, 31)
  df = yf.download('UBL.NS', start_date, end_date)
 </pre>
 <p>View Dataframe</p>
+<pre>df</pre>
+<samp>
+ <img width="580" alt="image" src="https://github.com/anuragprasad95/analysis-and-prediction-of-stock-price-using-LSTM/assets/3609255/62b77e1e-68b2-4298-84d6-7c33d434f217">
+</samp>
