@@ -97,10 +97,10 @@ plt.show()
  Plot - Candlestick and Frequency - Monthly OHLC Volume Data
 </p>
 <pre>
- # Plotting monthly candlestick chart with a separate volume plot with MA(20)
+#Plotting monthly candlestick chart with a separate volume plot with MA(20)
 #mpf.plot(monthly_data, type='candle', style='charles', volume=True, mav=(20), show_nontrading=True, addplot=mpf.make_addplot(monthly_data['Volume'], panel=1, ylabel='Volume'),tight_layout=True, figratio=(16, 9), scale_width_adjustment=dict(volume=0.7, candle=1))
 
-# Plotting monthly candlestick chart with a separate volume plot
+#Plotting monthly candlestick chart with a separate volume plot
 mpf.plot(monthly_data, type='candle', style='charles', volume=True, show_nontrading=True, tight_layout=True, figratio=(16, 9), scale_width_adjustment=dict(volume=0.7, candle=1))
 </pre>
 <samp>
