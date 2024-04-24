@@ -369,11 +369,11 @@ predictions = scaler.inverse_transform(predictions)
 2.8 Model Evaluations 
 </p>
 <pre>
- # Get the root mean squared error (RMSE)
+ #Get the root mean squared error (RMSE)
 rmse = np.sqrt(np.mean(((predictions - y_test) ** 2)))
 print("Root Mean Squared Error (RMSE):", rmse)
 
- # Calculate accuracy percentage
+ #Calculate accuracy percentage
 accuracy_percentage = (1 - (rmse / valid['Close'].mean())) * 100
 print("Accuracy Percentage:", accuracy_percentage)
 </pre>
